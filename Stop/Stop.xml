@@ -1,0 +1,37 @@
+<WaNoTemplate>
+
+	<WaNoMeta>
+ 		<Author>
+  			<Name> Celso R. C. Rego </Name>
+  			<Email>celsorego@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+			This WaNo prints a stop message
+ 		</Description>
+
+ 		<Keyword>msg</Keyword>
+	</WaNoMeta>
+	
+	<WaNoRoot name="Stop">
+	
+	<WaNoString name="Stop-msg">write your stop msg</WaNoString>
+
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+		export NANOVER=V4
+		source $NANOMATCH/$NANOVER/local_anaconda/bin/activate
+		conda activate simstack_kit
+		python print_msg.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>	
+		<WaNoInputFile logical_filename="print_msg.py">print_msg.py</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+		<WaNoOutputFile>Stop-msg</WaNoOutputFile>
+	</WaNoOutputFiles>
+
+</WaNoTemplate>

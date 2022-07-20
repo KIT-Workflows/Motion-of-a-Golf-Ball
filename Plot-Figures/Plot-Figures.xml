@@ -1,0 +1,48 @@
+<WaNoTemplate>
+	
+	<WaNoRoot name="Plot-Figures">
+	<WaNoFile logical_filename="Input-File"  name="Input-File">Projectile-motion/outputs/PROJDATA.yml</WaNoFile>
+	<WaNoBool name="Same-graph">False</WaNoBool>
+		<WaNoString visibility_condition="%s == True" visibility_var_path="Same-graph" name="figure-name">Plot-Figure.png</WaNoString>
+		<WaNoString visibility_condition="%s == True" visibility_var_path="Same-graph" name="figure-title">Title</WaNoString>
+		<WaNoString visibility_condition="%s == True" visibility_var_path="Same-graph" name="x-label">xvar</WaNoString>
+		<WaNoString visibility_condition="%s == True" visibility_var_path="Same-graph" name="y-label">yvar</WaNoString>
+		<WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="Same-graph" name="Plots">
+ 			<Element id="0">
+		 		<WaNoString name="x-axis">x0</WaNoString>
+		 		<WaNoString name="y-axis">y0</WaNoString>
+				<WaNoString name="legend">legend</WaNoString>
+ 			</Element>
+ 		</WaNoMultipleOf>
+
+	<WaNoBool name="Subplot">False</WaNoBool>
+	<WaNoString visibility_condition="%s == True" visibility_var_path="Subplot" name="subplot-name">Plot-subplot.png</WaNoString>
+	<WaNoString visibility_condition="%s == True" visibility_var_path="Subplot" name="subplot-title">Title</WaNoString>
+	<WaNoMultipleOf visibility_condition="%s == True" visibility_var_path="Subplot" name="Subplots">
+ 		<Element id="0">
+		 	<WaNoString name="x-axis">x0</WaNoString>
+		 	<WaNoString name="y-axis">y0</WaNoString>
+ 			<WaNoString name="x-label">xvar</WaNoString>
+			<WaNoString name="y-label">yvar</WaNoString>
+ 		</Element>
+ 	</WaNoMultipleOf>
+
+	</WaNoRoot>
+	
+	<WaNoExecCommand>
+	export NANOVER=V4
+	source $NANOMATCH/$NANOVER/local_anaconda/bin/activate
+	conda activate simstack_kit
+	python plot_figures.py 
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="plot_figures.py">plot_figures.py</WaNoInputFile>
+	</WaNoInputFiles>
+
+	<WaNoOutputFiles>
+		<WaNoOutputFile>{{ wano["figure-name"] }}</WaNoOutputFile>
+		<WaNoOutputFile>{{ wano["subplot-name"] }}</WaNoOutputFile>	
+    </WaNoOutputFiles>
+
+</WaNoTemplate>

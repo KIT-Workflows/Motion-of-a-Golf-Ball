@@ -1,0 +1,55 @@
+<WaNoTemplate>
+    
+    <WaNoMeta>
+ 		<Author>
+  			<Name> Celso R. C. Rego </Name>
+  			<Email>celsorego@kit.edu</Email>
+ 		</Author>
+
+		<Description>
+   			This WaNo perform a Projectiles motion 
+			   with or without air resistance correction.
+ 		</Description>
+
+ 		<Keyword>Projectiles motion</Keyword>
+	</WaNoMeta>
+	
+	<WaNoRoot name="Projectiles_motion">
+		<WaNoMultipleOf name="Parameters">
+ 			<Element id="0">
+			 	
+				 <WaNoDropDown name="System">
+					<Entry id="0" chosen="True">smooth ball</Entry>
+					<Entry id="1">smooth ball + drag</Entry>
+					<Entry id="2">golf ball + drag</Entry>
+					<Entry id="3">golf ball + drag + lift</Entry>
+				</WaNoDropDown>
+
+				<WaNoFloat name="x0 (m)">0.0</WaNoFloat>
+				<WaNoFloat name="y0 (m)">0.0</WaNoFloat>
+				<WaNoFloat name="v0 (m/s)">50</WaNoFloat>
+ 				<WaNoFloat name="Mass (kg)">0.5</WaNoFloat>
+				<WaNoFloat name="Angle (°)">15</WaNoFloat>
+				<WaNoFloat name="Radius (m)">0.2</WaNoFloat>
+				<WaNoString name="label">label</WaNoString>
+ 			</Element>
+ 		</WaNoMultipleOf>
+
+	</WaNoRoot>
+	<!-- <WaNoFloat name="vf-x">1.0</WaNoFloat>
+				<WaNoFloat name="vf-y">1.0</WaNoFloat> -->	
+	<WaNoExecCommand>
+		export NANOVER=V4
+		source $NANOMATCH/$NANOVER/local_anaconda/bin/activate
+		conda activate simstack_kit
+		python golf_ball.py
+	</WaNoExecCommand>
+	
+	<WaNoInputFiles>
+		<WaNoInputFile logical_filename="golf_ball.py">golf_ball.py</WaNoInputFile>
+	</WaNoInputFiles>
+	<WaNoOutputFiles>
+		<WaNoOutputFile>PROJOUT.yml</WaNoOutputFile>
+		<WaNoOutputFile>PROJDATA.yml</WaNoOutputFile>
+	</WaNoOutputFiles>
+</WaNoTemplate>
